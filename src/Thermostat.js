@@ -29,3 +29,14 @@ Thermostat.prototype.down = function (change) {
 Thermostat.prototype.resetTemp= function () {
   return this.temperature = 20;
 };
+
+Thermostat.prototype.energyUsage= function () {
+  if(this.temperature < 18) {
+    return 'low-usage';
+  }
+  if(this.temperature > 24) {
+    return 'high-usage';
+  }
+    return 'medium-usage';
+
+};

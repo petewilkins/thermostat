@@ -50,4 +50,19 @@ describe('Thermostat', function() {
       expect(function(){thermostat.up(13);}).toThrowError("Maximum temperature with power saving OFF is 32 degrees!");
     });
   });
+
+  describe('Energy usage', function(){
+    it('is low when below 18deg', function(){
+      thermostat.temperature = 17;
+      expect(thermostat.energyUsage()).toEqual("low-usage");
+    });
+    it('is medium when between 18 and 24deg', function(){
+      thermostat.temperature = 20;
+      expect(thermostat.energyUsage()).toEqual("medium-usage");
+    });
+    it('is high when 25deg or more', function(){
+      thermostat.temperature = 26;
+      expect(thermostat.energyUsage()).toEqual("high-usage");
+    });
+  });
 });

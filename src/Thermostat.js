@@ -16,12 +16,16 @@ Thermostat.prototype.up = function (change) {
   if(this.powerSaving === false && (this.temperature+change) >= 32){
     throw new TypeError("Maximum temperature with power saving OFF is 32 degrees!");
   }
-  this.currentTemp(change);
+  return this.currentTemp(change);
 };
 
 Thermostat.prototype.down = function (change) {
   if((this.temperature+change) <= 10) {
     throw new TypeError("Minimum temperature is 10 degrees!")
   }
-  this.currentTemp(change);
+  return this.currentTemp(change);
+};
+
+Thermostat.prototype.resetTemp= function () {
+  return this.temperature = 20;
 };

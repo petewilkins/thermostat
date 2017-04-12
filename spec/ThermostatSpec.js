@@ -33,6 +33,11 @@ describe('Thermostat', function() {
     expect(function(){thermostat.down(-11);}).toThrowError("Minimum temperature is 10 degrees!");
   });
 
+  it('resets temperature', function(){
+    thermostat.resetTemp();
+    expect(thermostat.temperature).toEqual(20);
+  });
+
   describe('Power saving on', function(){
     it('has a maximum temperature of 25deg', function() {
       expect(function(){thermostat.up(6);}).toThrowError("Maximum temperature with power saving ON is 25 degrees!");

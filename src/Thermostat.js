@@ -2,6 +2,7 @@
 
 function Thermostat() {
   this.temperature = 20;
+  this.isPowerSaving = true;
 }
 
 Thermostat.prototype.currentTemp = function(change) {
@@ -10,9 +11,19 @@ Thermostat.prototype.currentTemp = function(change) {
 };
 
 Thermostat.prototype.up = function (change) {
+  if(this.isPowerSaving === true && this.temperature+change >= 25){
+    throw new TypeError("Maximum temperature with power saving is 25 degrees!");
+  }
   this.currentTemp(change);
 };
 
 Thermostat.prototype.down = function (change) {
+  if((this.temperature+change) <= 10) {
+    throw new TypeError("Minimum temperature is 10 degrees!")
+  }
   this.currentTemp(change);
+};
+
+Thermostat.prototype.isPowerSaving = function () {
+
 };

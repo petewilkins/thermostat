@@ -11,7 +11,8 @@ describe('Thermostat', function() {
 
   describe('defaults', function() {
     it('temperature of 20deg', function() {
-      expect(thermostat.currentTemp(0)).toEqual(20);
+      thermostat.currentTemp(0);
+      expect(thermostat.temperature).toEqual(20);
     });
 
     it('power saving ON', function() {
@@ -46,7 +47,7 @@ describe('Thermostat', function() {
 
   describe('Power saving off', function(){
     it('has a maximum temperature of 32deg', function() {
-      thermostat.powerSaving = false;
+      thermostat.powerSavingOff();
       expect(function(){thermostat.up(13);}).toThrowError("Maximum temperature with power saving OFF is 32 degrees!");
     });
   });

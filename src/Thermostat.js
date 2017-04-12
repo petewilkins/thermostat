@@ -1,42 +1,55 @@
 'use strict';
 
 function Thermostat() {
-  this.temperature = 20;
+  this.DEFAULT_TEMPERATURE = 20
+  this.temperature = this.DEFAULT_TEMPERATURE;
   this.powerSaving = true;
+  this.MINIMUM_TEMPERATURE = 10;
+  this.MAX_TEMP_PSM_ON = 25;
+  this.MAX_TEMP_PSM_OFF = 32;
+  this.LOW_USAGE_LIMIT = 18;
+  this.HIGH_USAGE_LIMIT = 24;
 }
 
 Thermostat.prototype.currentTemp = function(change) {
-  return this.temperature += change;
+  this.temperature += change;
 };
 
 Thermostat.prototype.up = function (change) {
-  if(this.powerSaving === true && (this.temperature+change) >= 25){
+  if(this.powerSaving === true && (this.temperature+change) >= this.MAX_TEMP_PSM_ON){
     throw new TypeError("Maximum temperature with power saving ON is 25 degrees!");
   }
-  if(this.powerSaving === false && (this.temperature+change) >= 32){
+  if(this.powerSaving === false && (this.temperature+change) >= this.MAX_TEMP_PSM_OFF){
     throw new TypeError("Maximum temperature with power saving OFF is 32 degrees!");
   }
-  return this.currentTemp(change);
+  this.currentTemp(change);
 };
 
 Thermostat.prototype.down = function (change) {
-  if((this.temperature+change) <= 10) {
+  if((this.temperature+change) <= this.MINIMUM_TEMPERATURE) {
     throw new TypeError("Minimum temperature is 10 degrees!")
   }
-  return this.currentTemp(change);
+  this.currentTemp(change);
 };
 
-Thermostat.prototype.resetTemp= function () {
-  return this.temperature = 20;
+Thermostat.prototype.resetTemp = function () {
+  this.temperature = this.DEFAULT_TEMPERATURE;
 };
 
-Thermostat.prototype.energyUsage= function () {
-  if(this.temperature < 18) {
+Thermostat.prototype.energyUsage = function () {
+  if(this.temperature < this.LOW_USAGE_LIMIT) {
     return 'low-usage';
   }
-  if(this.temperature > 24) {
+  if(this.temperature > this.HIGH_USAGE_LIMIT) {
     return 'high-usage';
   }
-    return 'medium-usage';
+  return 'medium-usage';
+};
 
+Thermostat.prototype.powerSavingOn = function () {
+  this.powerSaving = true;
+};
+
+Thermostat.prototype.powerSavingOff = function () {
+  this.powerSaving = false;
 };

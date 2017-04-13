@@ -9,3 +9,8 @@
 .high-usage {
   background-color: #c0392b;
 }
+
+.button{
+  float: left;
+    border: 1px solid green;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" type="text/css" href="./public/mystyle.css">
     <title>Thermostat</title>
     <script type="text/javascript" src="src/snow.js"></script>
   </head>
@@ -9,7 +9,7 @@
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <section>
-      <h1>Current temperature: <span id="current-temperature">20</span></h1>
+      <h1> <span id="current-temperature">20</span></h1>
       <form id="select-city">
         <input id="current-city" type="text" placeholder="Enter a city"></input>
         <input type="submit"></input>
@@ -19,14 +19,13 @@
       <h1 id="temperature"></h1>
       <p>
         <div class="buttonlist">
-          <button id="temperature-up-1">+1</button>
-          <button id="temperature-up-5">+5</button>
-          <button id="temperature-down-1">-1</button>
-          <button id="temperature-down-5">-5</button>
-          <button id="temperature-reset">reset</button>
-          power saving mode is <span id="power-saving-status">on</span>
-          <button id="powersaving-on">PSM ON</button>
-          <button id="powersaving-off">PSM OFF</button>
+          <button class='button' id="temperature-up-1">+1</button>
+          <button class='button' id="temperature-up-5">+5</button>
+          <button class='button' id="temperature-down-1">-1</button>
+          <button class='button' id="temperature-down-5">-5</button>
+          <button class='button' id="temperature-reset">reset</button>
+          <!-- power saving mode is <span id="power-saving-status">on</span> -->
+
         </div>
       </p>
     </section>

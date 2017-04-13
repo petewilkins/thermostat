@@ -4,7 +4,7 @@ function Thermostat() {
   this.DEFAULT_TEMPERATURE = 20
   this.temperature = this.DEFAULT_TEMPERATURE;
   this.powerSaving = true;
-  this.MINIMUM_TEMPERATURE = 10;
+  this.MINIMUM_TEMPERATURE = -273;
   this.MAX_TEMP_PSM_ON = 25;
   this.MAX_TEMP_PSM_OFF = 32;
   this.LOW_USAGE_LIMIT = 18;
@@ -16,18 +16,13 @@ Thermostat.prototype.currentTemp = function(change) {
 };
 
 Thermostat.prototype.up = function (change) {
-  if(this.powerSaving === true && (this.temperature+change) >= this.MAX_TEMP_PSM_ON){
-    throw new TypeError("Maximum temperature with power saving ON is 25 degrees!");
-  }
-  if(this.powerSaving === false && (this.temperature+change) >= this.MAX_TEMP_PSM_OFF){
-    throw new TypeError("Maximum temperature with power saving OFF is 32 degrees!");
-  }
+
   this.currentTemp(change);
 };
 
 Thermostat.prototype.down = function (change) {
-  if((this.temperature+change) <= this.MINIMUM_TEMPERATURE) {
-    throw new TypeError("Minimum temperature is 10 degrees!")
+  if((this.temperature+change) < this.MINIMUM_TEMPERATURE) {
+    throw new TypeError("Minimum temperature is -273 degrees!")
   }
   this.currentTemp(change);
 };

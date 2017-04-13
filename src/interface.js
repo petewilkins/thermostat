@@ -18,7 +18,24 @@ $(document).ready(function() {
       $('#current-temperature').text(data.main.temp);
     })
   }
-  
+
+  function updateSnow(){
+    if(thermostat.temperature <= 13){
+      if(!isItSnowing()) {
+        snowStorm.toggleSnow();
+      }
+    }
+    else {
+      if(isItSnowing()) {
+        snowStorm.toggleSnow();
+      }
+    }
+  }
+
+  function isItSnowing(){
+    return snowStorm.active;
+  }
+
   $('#select-city').submit(function(event) {
     event.preventDefault();
     var city = $('#current-city').val();
@@ -30,21 +47,25 @@ $(document).ready(function() {
   $('#temperature-up-1').click(function(){
     thermostat.up(1);
     updateTemperature();
+    updateSnow();
   });
 
   $('#temperature-up-5').click(function(){
     thermostat.up(5);
     updateTemperature();
+    updateSnow();
   });
 
   $('#temperature-down-1').click(function(){
     thermostat.down(-1);
     updateTemperature();
+    updateSnow();
   });
 
   $('#temperature-down-5').click(function(){
     thermostat.down(-5);
     updateTemperature();
+    updateSnow();
   });
 
   $('#temperature-reset').click(function(){

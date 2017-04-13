@@ -8,9 +8,23 @@
     <script type="text/javascript" src="src/thermostatVisuals.js"></script>
     <script type="text/javascript" src='src/interface.js'></script>
     <script type="text/javascript" src="src/thermostat.js"></script>
+
   </head>
 
   <body>
+    <div id='header'>
+      <span id='header-text'>Ther-bro-meter</span>
+    </div>
+
+    <!-- <div id='weather-api'>
+      <div id="current-temperature">20</div>
+      <div id="city-form">
+        <form id="select-city">
+          <input id="current-city" type="text" placeholder="Enter a city"></input>
+          <input type="submit"></input>
+        </form>
+      </div>
+    </div> -->
 
     <div id="thermometer">
       <div class="track">
@@ -24,28 +38,16 @@
       </div>
     </div>
 
-    <div id='weather-api'>
-      <div id="current-temperature">20</div>
-      <div id="city-form">
-        <form id="select-city">
-          <input id="current-city" type="text" placeholder="Enter a city"></input>
-          <input type="submit"></input>
-        </form>
-      </div>
+  </body>
+
+  <footer class='footer'>
+    <div class="buttonlist">
+      <button class='button' id="temperature-down-5">- -</button>
+      <button class='button' id="temperature-down-1">-</button>
+      <button class='button' id="temperature-reset">Reset</button>
+      <button class='button' id="temperature-up-1">+</button>
+      <button class='button' id="temperature-up-5">+ +</button>
     </div>
 
-
-    <div id=''>
-      <p>
-        <div class="buttonlist">
-          <button class='button' id="temperature-up-1">+1</button>
-          <button class='button' id="temperature-up-5">+5</button>
-          <button class='button' id="temperature-down-1">-1</button>
-          <button class='button' id="temperature-down-5">-5</button>
-          <button class='button' id="temperature-reset">reset</button>
-          <!-- power saving mode is <span id="power-saving-status">on</span> -->
-        </div>
-      </p>
-    </section>
-  </body>
+  </footer>
 </html>

@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./public/mystyle.css">
     <title>Thermostat</title>
+    <link rel="stylesheet" type="text/css" href="./public/mystyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="src/snow.js"></script>
     <script type="text/javascript" src="src/thermostatVisuals.js"></script>
+    <script type="text/javascript" src='src/interface.js'></script>
+    <script type="text/javascript" src="src/thermostat.js"></script>
   </head>
 
   <body>
-    <section>
-      <h1> <span id="current-temperature">20</span></h1>
-      <form id="select-city">
-        <input id="current-city" type="text" placeholder="Enter a city"></input>
-        <input type="submit"></input>
-      </form>
-    </section>
-    <section>
-      <h1 id="temperature"></h1>
+
+    <div id="thermometer">
+      <div class="track">
+        <div class="goal">
+          <div class="amount" id="goalAmount">100</div>
+        </div>
+        <div class="progress">
+          <div style="display: block; " class="amount" id="progress">20</div>
+        </div>
+        <div class="bulb "><div class="inner-bulb "></div></div>
+      </div>
+    </div>
+
+    <div id='weather-api'>
+      <div id="current-temperature">20</div>
+      <div id="city-form">
+        <form id="select-city">
+          <input id="current-city" type="text" placeholder="Enter a city"></input>
+          <input type="submit"></input>
+        </form>
+      </div>
+    </div>
+
+
+    <div id=''>
       <p>
         <div class="buttonlist">
           <button class='button' id="temperature-up-1">+1</button>
@@ -27,20 +45,7 @@
           <button class='button' id="temperature-reset">reset</button>
           <!-- power saving mode is <span id="power-saving-status">on</span> -->
         </div>
-        <div id="thermometer">
-          <div class="track">
-            <div class="goal">
-              <div class="amount" id="goalAmount">100</div>
-            </div>
-            <div class="progress">
-              <div style="display: block; " class="amount" id="progress">20</div>
-            </div>
-		        <div class="bulb "><div class="inner-bulb "></div></div>
-          </div>
-        </div>
       </p>
     </section>
-    <script type="text/javascript" src='src/interface.js'></script>
-    <script type="text/javascript" src="src/thermostat.js"></script>
   </body>
 </html>

@@ -11,8 +11,16 @@ $(document).ready(function() {
   }
 
   function updateTemperature() {
-    $('#temperature').text(thermostat.temperature);
-    $('body').attr('class', thermostat.energyUsage());
+    var temp = thermostat.temperature
+    if(temp < 14){
+      $('.progress,.inner-bulb').css({'background-color': '#27ae60'})
+    }
+    else if(temp < 30){
+      $('.progress,.inner-bulb').css({'background-color': '#e67e22'})
+    }
+    else{
+    $('.inner-bulb,.progress').css({'background-color': '#e74c3c'})
+    }
   }
 
   function displayWeather(city) {

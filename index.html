@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./public/mystyle.css">
     <title>Thermostat</title>
     <script type="text/javascript" src="src/snow.js"></script>
+    <script type="text/javascript" src="src/thermostatVisuals.js"></script>
   </head>
 
   <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <section>
       <h1> <span id="current-temperature">20</span></h1>
       <form id="select-city">
@@ -25,7 +26,17 @@
           <button class='button' id="temperature-down-5">-5</button>
           <button class='button' id="temperature-reset">reset</button>
           <!-- power saving mode is <span id="power-saving-status">on</span> -->
-
+        </div>
+        <div id="thermometer">
+          <div class="track">
+            <div class="goal">
+              <div class="amount" id="goalAmount">100</div>
+            </div>
+            <div class="progress">
+              <div style="display: block; " class="amount" id="progress">20</div>
+            </div>
+		        <div class="bulb "><div class="inner-bulb "></div></div>
+          </div>
         </div>
       </p>
     </section>

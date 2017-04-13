@@ -1,9 +1,14 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
-  updateTemperature();
+  updateVisuals();
 
   displayWeather('London');
 
+  function updateVisuals() {
+    updateTemperature();
+    updateSnow();
+    updateThermostat(100,thermostat.temperature,false);
+  }
 
   function updateTemperature() {
     $('#temperature').text(thermostat.temperature);
@@ -36,6 +41,10 @@ $(document).ready(function() {
     return snowStorm.active;
   }
 
+  function updateThermostat(){
+    thermometer(100,thermostat.temperature,false);
+  }
+
   $('#select-city').submit(function(event) {
     event.preventDefault();
     var city = $('#current-city').val();
@@ -46,42 +55,38 @@ $(document).ready(function() {
 
   $('#temperature-up-1').click(function(){
     thermostat.up(1);
-    updateTemperature();
-    updateSnow();
+    updateVisuals();
   });
 
   $('#temperature-up-5').click(function(){
     thermostat.up(5);
-    updateTemperature();
-    updateSnow();
+    updateVisuals();
   });
 
   $('#temperature-down-1').click(function(){
     thermostat.down(-1);
-    updateTemperature();
-    updateSnow();
+    updateVisuals();
   });
 
   $('#temperature-down-5').click(function(){
     thermostat.down(-5);
-    updateTemperature();
-    updateSnow();
+    updateVisuals();
   });
 
   $('#temperature-reset').click(function(){
     thermostat.resetTemp();
-    updateTemperature();
+    updateVisuals();
   });
 
   $('#powersaving-on').click(function(){
     thermostat.powerSavingOn();
     $('#power-saving-status').text('on')
-    updateTemperature();
+    updateVisuals();
   });
 
   $('#powersaving-off').click(function(){
     thermostat.powerSavingOff();
     $('#power-saving-status').text('off')
-    updateTemperature();
+    updateVisuals();
   })
 });
